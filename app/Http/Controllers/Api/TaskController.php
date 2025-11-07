@@ -115,7 +115,7 @@ class TaskController extends Controller
     }
 
     /**
-    * Обновить вложение
+    * Удалить вложение
     *
     * @route PATCH /api/tasks/{id}/detach
     */
