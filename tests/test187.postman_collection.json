@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "bdaa6b87-efa2-4c11-89c7-13047de49249",
+		"name": "test187",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40039781",
+		"_collection_link": "https://local8-5977.postman.co/workspace/Local-Workspace~24bf8700-ad76-494d-8236-636eeeb9a5e4/collection/40039781-bdaa6b87-efa2-4c11-89c7-13047de49249?action=share&source=collection_link&creator=40039781"
+	},
+	"item": [
+		{
+			"name": "Заявка",
+			"item": [
+				{
+					"name": "Вложение",
+					"item": [
+						{
+							"name": "Добавить",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "attachment",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/1/attach",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"1",
+										"attach"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Создать",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"protocolVersion": "http2"
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/51/tasks?project_id=1&title=Test&assignee_id=61",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"51",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "project_id",
+									"value": "1"
+								},
+								{
+									"key": "title",
+									"value": "Test"
+								},
+								{
+									"key": "assignee_id",
+									"value": "61"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Список",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/51/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"51",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "attachment",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/1/attach",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								"attach"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
