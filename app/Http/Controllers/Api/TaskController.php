@@ -27,14 +27,9 @@ class TaskController extends Controller
     {
         $tasks = Task::where('project_id', $projectId);
 
-        if ($request->has('status') && $request->status)
-            $tasks->where('status', $request->status);
-
-        if ($request->has('assignee_id') && $request->assignee_id)
-            $tasks->where('assignee_id', $request->assignee_id);
-
-        if ($request->has('completion_date') && $request->completion_date)
-            $tasks->whereDate('completion_date', $request->completion_date);
+        foreach (['status', 'assignee_id', 'completion_date',] as $key)
+            if ($request->has($key) && $request->$key)
+                $tasks->where($key, $request->$key);
 
         return response()->json($tasks->get());
     }
@@ -117,7 +112,7 @@ class TaskController extends Controller
         $result = Task::findOrFail($id)->addMediaFromRequest('attachment')
             ->toMediaCollection();
 
-        return response()->json($result, 200);
+        return response()->json($result);
     }
 
     /**
@@ -129,7 +124,7 @@ class TaskController extends Controller
     {
         Task::findOrFail($id)->clearMediaCollection();
 
-        return response()->json(true, 200);
+        return response()->json(true);
     }
 
     /**
