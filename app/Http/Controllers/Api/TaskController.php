@@ -7,6 +7,7 @@ use App\Models\{Task, Project};
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
+use App\Notifications\TaskCreatedNotification;
 
 /**
 * Задача
@@ -54,11 +55,16 @@ class TaskController extends Controller
     {
         try {
             $data = $request->validate(Task::createRules());
+            $task = Task::create($data);
         } catch (ValidationException $exception) {
             return response()->json($exception->errors(), 400);
+        } catch (\Throwable $exception) {
+            return response()->json($exception->getMessage(), 400);
         }
 
-        return response()->json(Task::create($data), 201);
+        $task->assignee->notify(new TaskCreatedNotification($task));
+
+        return response()->json($task, 201);
     }
 
     /**
